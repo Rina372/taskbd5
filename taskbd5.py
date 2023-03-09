@@ -131,17 +131,7 @@ def delete_client(conn=None):
          else:
              print("Вы ввели неправильную команду, попробуйте снова")
 
-def check_function(cur):
-    cur.execute("""
-    SELECT * FROM clients;
-    """)
-    pprint(cur.fetchall())
-    cur.execute("""
-    SELECT * FROM phone_numbers;
-    """)
-    pprint(cur.fetchall())
-
-with psycopg2.connect(database="task5bd", user="postgres", password="3Ir7in2a") as conn:
+with psycopg2.connect(database="task5bd", user="postgres", password="postgres") as conn:
     with conn.cursor() as cur:
         create_tables(cur)
         check_function(cur)
