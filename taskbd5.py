@@ -87,8 +87,8 @@ def delete_client(conn=None):
         DELETE FROM clients WHERE client_id=%s AND last_name=%s
         """, (input_id_for_delete_client, input_last_name_for_delete))
 
-    def find_client():
-     print("Для поиска информации о клиенте, введите команду, где:\n "
+def find_client():
+    print("Для поиска информации о клиенте, введите команду, где:\n "
         "1 - найти по имени; 2 - найти по фамилии; 3 - найти по e-mail; 4 - найти по номеру телефона")
      while True:
          input_command_find = int(input("Введите команду: "))
@@ -135,18 +135,18 @@ with psycopg2.connect(database="task5bd", user="postgres", password="postgres") 
     with conn.cursor() as cur:
         create_tables(cur)
         check_function(cur)
-        add_new_client(cur, "Tim", "Grey", "tm@g.com")
-        add_new_client(cur, "Ben", "Brown", "bb@g.com")
-        add_new_client(cur, "Ann", "Oldman", "ao@g.com")
-        add_new_client(cur, "Kate", "Tompson", "kt@g.com")
-        add_new_client(cur, "Tom", "Green", "tg@g.com")
-        add_new_phonenumber(cur, 1, "79561236564")
-        add_new_phonenumber(cur, 2, "96328520201")
-        add_new_phonenumber(cur, 3, "45789612303")
-        add_new_phonenumber(cur, 4, "10203040506")
-        add_new_phonenumber(cur, 5, "98765413203")
-        change_client_data()
-        delete_client_phonenumber()
+        add_client(cur, "Tim", "Grey", "tm@g.com")
+        add_client(cur, "Ben", "Brown", "bb@g.com")
+        add_client(cur, "Ann", "Oldman", "ao@g.com")
+        add_client(cur, "Kate", "Tompson", "kt@g.com")
+        add_client(cur, "Tom", "Green", "tg@g.com")
+        add_phone(cur, 1, "79561236564")
+        add_phone(cur, 2, "96328520201")
+        add_phone(cur, 3, "45789612303")
+        add_phone(cur, 4, "10203040506")
+        add_phone(cur, 5, "98765413203")
+        change_client()
+        delete_phone()
         delete_client()
         find_client()
 
